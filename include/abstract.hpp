@@ -1,16 +1,9 @@
 #ifndef ABSTRACT_HPP
     #define ABSTRACT_HPP
 
-    #include <iostream>
-    #include <fstream>
-    #include <vector>
-    #include <map>
-    #include <string>
-    #include <iterator>
-    #include <iomanip>
-
-    #define TRAILING_SPACE "trailing space at the end of the line"
-    #define TRAILING_TAB "tabulation found on the line"
+    #include "required.hpp"
+    #include "logs.hpp"
+    #include "types.hpp"
 
     #define TAB  "	"
 
@@ -24,13 +17,14 @@
             bool build();
             bool load();
             bool check_args();
-            bool scan_spaces();
-            bool scan_tabs();
             bool parse();
             bool report_error(std::string);
             bool display_errors();
+            bool display_banner();
 
-            std::string set_line(size_t);
+            bool scan_spaces();
+            bool scan_tabs();
+            bool scan_functions();
 
             // args
             int ac;
@@ -45,7 +39,19 @@
             size_t line_number;
             std::string current_line;
             std::vector<std::string> lines;
-            std::map<std::string, size_t> report_data;
+            std::vector<std::string> banner = {
+                "Abstrakt",
+                "Author:  Neotoxic-off",
+                "Version: 1.0.0"
+            };
+            
+            struct report
+            {
+                std::vector<std::string> data;
+                std::vector<std::size_t> line;
+            };
+
+            report reported;
     };
 
 #endif /* ABSTRACT_HPP */

@@ -1,7 +1,5 @@
 #include "abstract.hpp"
 
-#include "types.hpp"
-
 abstract::abstract(int ac, char **argv)
 {
     this->ac = ac;
@@ -9,12 +7,23 @@ abstract::abstract(int ac, char **argv)
     this->line_number = 0;
     this->total_lines = 0;
 
+    abstract::display_banner();
     abstract::build();
 }
 
 abstract::~abstract()
 {
     return;
+}
+
+bool abstract::display_banner()
+{
+    for (auto i = this->banner.begin(); i != this->banner.end(); i++) {
+        std::cout << *i << std::endl;
+    }
+    std::cout << std::endl;
+
+    return (true);
 }
 
 bool abstract::build()
@@ -49,39 +58,10 @@ bool abstract::load()
     return (true);
 }
 
-bool abstract::scan_spaces()
-{
-    size_t size = this->current_line.size();
-
-    if (size > 0) {
-        if (this->current_line[size - 1] == ' ') {
-            abstract::report_error(TRAILING_SPACE);
-            return (true);
-        }
-    }
-
-    return (false);
-}
-
-bool abstract::scan_tabs()
-{
-    size_t size = this->current_line.length();
-
-    if (size > 0) {
-        for (size_t i = 0; i < size; i++) {
-            if (this->current_line[i] == TAB[0]) {
-                abstract::report_error(TRAILING_TAB);
-                return (true);
-            }
-        }
-    }
-
-    return (false);
-}
-
 bool abstract::report_error(std::string type_data)
 {
-    this->report_data.insert(std::pair<std::string, size_t>(type_data, this->line_number));
+    this->reported.data.push_back(type_data);
+    this->reported.line.push_back(this->line_number);
 
     return (true);
 }
@@ -92,6 +72,7 @@ bool abstract::parse()
         this->current_line = *i;
         abstract::scan_spaces();
         abstract::scan_tabs();
+        abstract::scan_functions();
     }
 
     return (true);
@@ -99,29 +80,15 @@ bool abstract::parse()
 
 bool abstract::display_errors()
 {
-    std::string display_line_label = "line: ";
     size_t line_size = std::to_string(this->total_lines).size() + 1;
-    size_t previous = 0;
 
-    for (auto i = this->report_data.begin(); i != this->report_data.end(); i++) {
-        if (i->second != previous) {
-            previous = i->second;
-            std::cout << display_line_label << previous << std::endl;
-        }
-        std::cout << "\t" << i->first << std::endl;
+    auto line_index = this->reported.line.begin();
+    auto data_index = this->reported.data.begin();
+
+    for (; line_index != this->reported.line.end(); line_index++, data_index++) {
+
+        std::cout << "line: " << *line_index << " " << *data_index << std::endl;
     }
 
-    std::cout << std::endl << this->report_data.size() << " error(s) for " << this->lines.size() << " lines" << std::endl;
-    
     return (true);
-}
-
-std::string abstract::set_line(size_t size)
-{
-    std::string line = "";
-
-    for (size_t i = 0; i < size; i++)
-        line += '-';
-
-    return (line);
 }
