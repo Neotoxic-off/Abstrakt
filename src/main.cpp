@@ -1,8 +1,8 @@
-#include "abstract.hpp"
+#include "abstrakt.hpp"
 
 int main(int ac, char **argv)
 {
-    abstract abstract_v = abstract(ac, argv);
+    abstrakt abstract_v(ac, argv);
 
     return (0);
 }

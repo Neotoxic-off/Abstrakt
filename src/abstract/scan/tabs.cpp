@@ -1,13 +1,15 @@
-#include "abstract.hpp"
+#include "abstrakt.hpp"
 
-bool abstract::scan_tabs()
+bool abstrakt::scan_tabs()
 {
     size_t size = this->current_line.length();
 
     if (size > 0) {
         for (size_t i = 0; i < size; i++) {
             if (this->current_line[i] == TAB[0]) {
-                abstract::report_error(TRAILING_TAB);
+                abstrakt::report_error(
+                    this->logs.map[0x01]
+                );
                 return (true);
             }
         }

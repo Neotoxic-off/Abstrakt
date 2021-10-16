@@ -1,15 +1,17 @@
-#include "abstract.hpp"
+#include "abstrakt.hpp"
 
-#include "exclutions.hpp"
+#include "exclusions.hpp"
 
-bool abstract::scan_functions()
+bool abstrakt::scan_functions()
 {
     size_t size = this->current_line.length();
 
     if (size > 0) {
-        for (auto i = exclutions::functions.begin(); i != exclutions::functions.end(); i++) {
+        for (auto i = this->exclution.functions.begin(); i != this->exclution.functions.end(); i++) {
             if (this->current_line.find(*i) != std::string::npos) {
-                abstract::report_error(std::string(FORBIDDEN_FUNCTION).append(*i));
+                abstrakt::report_error(
+                    this->logs.map[0x02].append(*i)
+                );
                 return (true);
             }
         }
