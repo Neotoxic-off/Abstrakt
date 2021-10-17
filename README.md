@@ -2,7 +2,7 @@
 Epitech norminette
 
 <p align="center">
-    <a><img src="https://raw.githubusercontent.com/Neotoxic-off/Abstrakt/main/img/logo.png" width=50% height=50%></a>
+    <a><img src="https://raw.githubusercontent.com/Neotoxic-off/Abstrakt/main/img/logo.png" width=20% height=20%></a>
 </p>
 
 ## Usage
