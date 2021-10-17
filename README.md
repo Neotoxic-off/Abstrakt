@@ -1,5 +1,6 @@
-# Abstrakt
-Epitech norminette
+<p align="center">
+    <a><img src="https://raw.githubusercontent.com/Neotoxic-off/Abstrakt/main/img/logo.png" width=30% height=30%></a>
+</p>
 
 ## Usage
 ```
