@@ -6,6 +6,7 @@
     #include "exclusions.hpp"
     #include "report.hpp"
     #include "colors.hpp"
+    #include "types.hpp"
 
     class abstrakt
     {
@@ -18,6 +19,7 @@
             Logs logs;
             Colors colors;
             Exclusions exclution;
+            Types types;
 
             // struct
             report reported;
@@ -29,11 +31,13 @@
 
                 // settings
                 char *file;
-                size_t total_lines;
+                std::size_t total_lines;
 
                 // data
-                size_t errors;
-                size_t line_number;
+                std::size_t errors;
+                std::size_t line_number;
+                std::size_t function_number;
+
                 std::string current_line;
                 std::vector<std::string> lines;
                 std::vector<std::string> banner = {
@@ -44,18 +48,21 @@
                 };
 
             // functions
-            bool build();
-            bool load();
-            bool check_args();
-            bool parse();
-            bool report_error(std::string);
-            bool display_errors();
-            bool display_banner();
+                // tools
+                bool build();
+                bool load();
+                bool check_args();
+                bool parse();
+                bool report_error(std::string);
+                bool display_errors();
+                bool display_banner();
 
-            bool scan_spaces();
-            bool scan_tabs();
-            bool scan_functions();
-            bool scan_line_length();
+                // scan
+                bool scan_spaces();
+                bool scan_tabs();
+                bool scan_functions();
+                bool scan_line_length();
+                bool count_functions();
     };
 
 #endif /* ABSTRACT_HPP */

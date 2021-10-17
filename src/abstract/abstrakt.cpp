@@ -74,6 +74,7 @@ bool abstrakt::parse()
         abstrakt::scan_tabs();
         abstrakt::scan_functions();
         abstrakt::scan_line_length();
+        // abstrakt::count_functions();
     }
 
     return (true);
