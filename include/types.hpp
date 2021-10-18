@@ -19,7 +19,10 @@
                 "unsigned long",
                 "size_t",
                 "double",
-                "long double"
+                "long double",
+                "const",
+                "typedef",
+                "struct"
             };
 
             bool is_type(std::string);

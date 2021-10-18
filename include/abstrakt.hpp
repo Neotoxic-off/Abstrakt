@@ -37,8 +37,8 @@
                 std::size_t errors;
                 std::size_t line_number;
                 std::size_t function_number;
-
                 std::string current_line;
+
                 std::vector<std::string> lines;
                 std::vector<std::string> banner = {
                     " _____ _       _           _   _   ",
@@ -63,6 +63,7 @@
                 bool scan_functions();
                 bool scan_line_length();
                 bool count_functions();
+                bool scan_header();
     };
 
 #endif /* ABSTRACT_HPP */

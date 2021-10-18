@@ -8,5 +8,6 @@
     #include <string>
     #include <iterator>
     #include <iomanip>
+    #include <regex>
 
 #endif /* REQUIRED_HPP */

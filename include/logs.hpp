@@ -13,6 +13,7 @@
                 { 0x01, "tabulation found" },
                 { 0x02, "forbidden function found called" },
                 { 0x03, "too long line" },
+                { 0x04, "bad header format" },
             };
     };
 
