@@ -13,7 +13,7 @@ bool abstrakt::scan_header()
     };
 
     if (size > 0) {
-        if (this->line_number >= 0 && this->line_number <= header.size()) {
+        if (this->line_number <= header.size()) {
             if (this->current_line.find(header[this->line_number]) == std::string::npos) {
                 abstrakt::report_error(
                     this->logs.map[0x04]

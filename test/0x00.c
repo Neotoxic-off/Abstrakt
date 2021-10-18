@@ -1,3 +1,9 @@
+/*
+** EPITECH PROJECT, 2021
+** Abstrakt
+** File description:
+** 0x00.c
+*/
 
 #include <stdio.h>
 
