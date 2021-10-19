@@ -14,4 +14,4 @@ make
 - [X] trailing space
 - [X] tabulation
 - [ ] function count
-- [ ] line length
+- [X] line length
