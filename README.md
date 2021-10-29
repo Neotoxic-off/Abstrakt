@@ -15,3 +15,4 @@ make
 - [X] tabulation
 - [ ] function count
 - [X] line length
+- [X] epitech header checker
